@@ -1,0 +1,50 @@
+CC	=	g++
+CFLAGS	=	-ggdb3 -Wall -Woverloaded-virtual
+#CC	  =	CC
+#CFLAGS  =	-g +p +w
+GCFLAGS =	-g
+LDFLAGS =	
+DPFLAGS =	-MM
+
+BASESRC =       symtab.cc string.cc ast.cc codegen.cc main.cc
+SOURCES =	$(BASE) parser.cc scanner.cc
+BASEHDR =	symtab.hh ast.hh string.hh codegen.hh
+HEADERS =       $(BASEHDR) parser.h
+OBJECTS =	$(SOURCES:%.cc=%.o)
+OUTFILE =	compiler
+
+FLEX	= /home/komp/bin/flex
+BISON	= bison
+
+DPFILE  =	Makefile.dependencies
+
+all : $(OUTFILE)
+
+$(OUTFILE) : $(OBJECTS)
+	$(CC) -o $(OUTFILE) $(OBJECTS) $(LDFLAGS)
+
+parser.h parser.cc : parser.y Makefile
+	$(BISON) --defines --output-file=parser.cc parser.y
+	mv parser.cc.h parser.h
+
+scanner.cc : scanner.l Makefile
+	$(FLEX) scanner.l
+
+scanner.o : scanner.cc
+	$(CC) $(GCFLAGS) -c $<
+
+parser.o : parser.cc
+	$(CC) $(GCFLAGS) -c $<
+
+.cc.o: $(DPFILE) Makefile
+	$(CC) $(CFLAGS) -c $<
+
+clean : 
+	rm -f $(OBJECTS) core *~ scanner.cc parser.cc parser.h $(DPFILE) $(OUTFILE) parser.cc.output
+	touch $(DPFILE)
+
+
+$(DPFILE) depend : $(BASESRC) $(HEADERS)
+	$(CC) $(DPFLAGS) $(CFLAGS) $(BASESRC) > $(DPFILE)
+
+include $(DPFILE)

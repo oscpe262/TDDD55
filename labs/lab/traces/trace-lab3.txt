@@ -1,0 +1,102 @@
+FunctionInformation @ 0x760330
+  Tag:     0
+  ID:      main.
+  Table:   0
+  Parent:  0 
+  Returns: 0 
+  Parameters: none
+  Locals:
+    0x76a2c0 f
+    0x76a160 e
+    0x76a000 d
+    0x769ea0 c
+    0x769d20 b
+    0x769c88 a
+  Body:  0x76e7a8
+StatementList (statement, preceding)
++-CallStatement (call)
+| +-FunctionCall (function, arguments) [integer]
+|   +-putint
+|   +-ExpressionList (expression, preceding)
+|     +-ArrayReference (id, index)
+|     | +-d
+|     | +-IntegerConstant (10) [integer]
+|     +-0
++-StatementList (statement, preceding)
+  +-Assignment (left, right)
+  | +-Identifier (d)
+  | +-FunctionCall (function, arguments) [array 11 of integer]
+  |   +-g
+  |   +-ExpressionList (expression, preceding)
+  |     +-Identifier (c)
+  |     +-0
+  +-StatementList (statement, preceding)
+    +-WhileStatement (condition, body)
+    | +-LessThan (left, right)
+    | | +-Identifier (a)
+    | | +-IntegerConstant (9) [integer]
+    | +-StatementList (statement, preceding)
+    |   +-Assignment (left, right)
+    |   | +-ArrayReference (id, index)
+    |   | | +-c
+    |   | | +-Identifier (a)
+    |   | +-FunctionCall (function, arguments) [integer]
+    |   |   +-getint
+    |   |   +-0
+    |   +-0
+    +-StatementList (statement, preceding)
+      +-Assignment (left, right)
+      | +-Identifier (a)
+      | +-IntegerConstant (0) [integer]
+      +-StatementList (statement, preceding)
+        +-CallStatement (call)
+        | +-FunctionCall (function, arguments) [integer]
+        |   +-putint
+        |   +-ExpressionList (expression, preceding)
+        |     +-FunctionCall (function, arguments) [integer]
+        |     | +-fac
+        |     | +-ExpressionList (expression, preceding)
+        |     |   +-FunctionCall (function, arguments) [integer]
+        |     |   | +-getint
+        |     |   | +-0
+        |     |   +-0
+        |     +-0
+        +-StatementList (statement, preceding)
+          +-CallStatement (call)
+          | +-FunctionCall (function, arguments) [integer]
+          |   +-putint
+          |   +-ExpressionList (expression, preceding)
+          |     +-FunctionCall (function, arguments) [integer]
+          |     | +-fib
+          |     | +-ExpressionList (expression, preceding)
+          |     |   +-FunctionCall (function, arguments) [integer]
+          |     |   | +-getint
+          |     |   | +-0
+          |     |   +-0
+          |     +-0
+          +-0
+  Quads: 0
+
+-------------------------------------------------------------------------------
+SymbolTable @ 0x760360
+-------------------------------------------------------------------------------
+7	0x76a280 0x76a280 'real<11>.' array 11 of real [88]
+11	0x764510 getint() -> integer
+65	0x769c88 a : 0x761388 integer [4]
+66	0x769d20 b : 0x7613c8 real [8] --> 0x769c88 a
+67	0x769ea0 c : 0x769e60 'integer<10>.' array 10 of integer [40] --> 0x769d20 b
+68	0x76a000 d : 0x769fc0 'integer<11>.' array 11 of integer [44] --> 0x769ea0 c
+69	0x76a160 e : 0x76a120 'real<10>.' array 10 of real [80] --> 0x76a000 d
+70	0x76a2c0 f : 0x76a280 'real<11>.' array 11 of real [88] --> 0x76a160 e
+71	0x76c9f0 g(x) -> array 11 of integer
+88	0x761388 0x761388 integer [4]
+92	0x761408 putreal(x) -> integer
+250	0x76a120 0x76a120 'real<10>.' array 10 of real [80]
+511	0x76b630 fib(x) -> integer
+519	0x76a310 fac(x) -> integer
+603	0x7613c8 0x7613c8 real [8]
+664	0x769fc0 0x769fc0 'integer<11>.' array 11 of integer [44]
+775	0x762460 putint(x) -> integer
+907	0x769e60 0x769e60 'integer<10>.' array 10 of integer [40]
+918	0x7634b8 getreal() -> real
+-------------------------------------------------------------------------------
