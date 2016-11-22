@@ -16,6 +16,12 @@ using namespace std;
 
 class Parser
 {
+    Scanner scanner;
+    Token   currentToken;
+
+    double E(void);
+    double E_(void);
+    double T(void);
 public:
     void Recover(void);         // Error recovery routine
     double Parse(void);         // Main entry point
